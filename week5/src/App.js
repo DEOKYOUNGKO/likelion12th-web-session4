@@ -1,10 +1,9 @@
 import React from "react";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
-import Movie from "./components/Movie";
-import MovieList from "./components/MovieList";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import Main from "./page/Main";
 
 function App() {
   const [click, setClick] = useState(false);
@@ -15,8 +14,9 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Modal />
+      <Header LoginBtn={handleLogin}></Header>
+      <Main />
+      {click && <Modal click={handleLogin} />}
       <Footer />
     </>
   );

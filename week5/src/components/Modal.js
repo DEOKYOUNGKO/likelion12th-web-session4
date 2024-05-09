@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import kakao from "../assets/image/icon_kakao.png";
 import google from "../assets/image/icon_google.png";
@@ -7,21 +6,11 @@ import line from "../assets/image/icon_line.png";
 import logo from "../assets/image/icon_logo.png";
 
 const Modal = ({ click }) => {
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
-
-  const openModal = () => {
-    setLoginModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setLoginModalOpen(false);
-  };
   return (
-    <>
-      <LoginButton onClick={openModal}>로그인</LoginButton>
-      <Modal open={loginModalOpen} close={closeModal}>
+    <BackGround>
+      <Container>
+        <OutButton onClick={() => click(false)}>X</OutButton>
         <LogoImage src={logo} alt="로고 이미지" />
-        <Title>로그인</Title>
         <LoginInput placeholder="이메일" />
         <LoginInput placeholder="비밀번호" />
         <LoginRedButton>로그인</LoginRedButton>
@@ -36,24 +25,29 @@ const Modal = ({ click }) => {
           <GrayLine />
         </CenterBlock>
         <WrapIcon>
-          <img src={kakao} alt="kako" />
-          <img src={google} alt="google" />
-          <img src={twitter} alt="twitter" />
-          <img src={line} alt="line" />
+          <LogoImg src={kakao} alt="kakao" />
+          <LogoImg src={google} alt="google" />
+          <LogoImg src={twitter} alt="twitter" />
+          <LogoImg src={line} alt="line" />
         </WrapIcon>
         <LoginTip>
-          TIP.왓챠 계정이 있으신가요? 왓챠와 왓챠피디아는 같은 계정을 사용해요.
+          TIP. 왓챠 계정이 있으신가요? 왓챠와 왓챠피디아는 같은 계정을 사용해요.
         </LoginTip>
-      </Modal>
-    </>
+      </Container>
+    </BackGround>
   );
 };
 
-const LoginButton = styled.div`
-  cursor: pointer;
-  margin-right: 20px;
-  border: none;
-  background: none;
+const BackGround = styled.div`
+  z-index: 200;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const LogoImage = styled.img`
@@ -71,12 +65,6 @@ const WrapIcon = styled.div`
   margin: 40px;
 `;
 
-const Title = styled.div`
-  font-weight: bolder;
-  font-size: 17px;
-  margin-bottom: 20px;
-`;
-
 const LoginRedButton = styled.button`
   width: 330px;
   height: 40px;
@@ -85,7 +73,7 @@ const LoginRedButton = styled.button`
   border-radius: 5px;
   border: none;
   text-align: center;
-  color: white;
+  color: #ffffff;
   font-size: 15px;
   font-weight: bolder;
 `;
@@ -105,6 +93,8 @@ const LoginInput = styled.input`
   ::placeholder {
     font-size: 15px;
     padding-left: 10px;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -128,6 +118,36 @@ const LoginTip = styled.div`
   padding-top: 10px;
   border-radius: 5px;
   margin: 10px;
+`;
+
+const Container = styled.div`
+  margin: auto;
+  display: flex;
+  width: 450px;
+  height: 630px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+`;
+
+const LogoImg = styled.img`
+  margin-left: 10px;
+`;
+
+const OutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border: none;
+  align-self: start;
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 20px;
 `;
 
 export default Modal;
