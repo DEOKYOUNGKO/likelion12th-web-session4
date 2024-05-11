@@ -5,18 +5,8 @@ import Data from "../assets/Data";
 function MovieList() {
   return (
     <MovieListContainer>
-      {Data.map((movie) => (
-        <Movie
-          key={movie.rank}
-          rank={movie.rank}
-          img={movie.img}
-          title={movie.title}
-          year={movie.year}
-          country={movie.country}
-          average={movie.average}
-          percent={movie.percent}
-          audience={movie.audience}
-        />
+      {Data.map((movie, index) => (
+        <Movie data={movie} />
       ))}
     </MovieListContainer>
   );
@@ -25,8 +15,12 @@ function MovieList() {
 export default MovieList;
 
 const MovieListContainer = styled.div`
+  width: 90%;
+  height: 600px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

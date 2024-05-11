@@ -18,7 +18,7 @@ export const Data = [
     country: "한국",
     average: "3.0",
     percent: "70%",
-    audience: "6420000",
+    audience: "642",
   },
   {
     rank: 2,
@@ -28,7 +28,7 @@ export const Data = [
     country: "미국",
     average: "2.9",
     percent: "6.6%",
-    audience: "1470000",
+    audience: "147",
   },
   {
     rank: 3,
@@ -38,7 +38,7 @@ export const Data = [
     country: "미국",
     average: "",
     percent: "4.7%",
-    audience: "",
+    audience: "5",
   },
   {
     rank: 4,
@@ -48,7 +48,7 @@ export const Data = [
     country: "일본",
     average: "3.2",
     percent: "3.8%",
-    audience: "39000",
+    audience: "3.9",
   },
   {
     rank: 5,
@@ -58,7 +58,7 @@ export const Data = [
     country: "미국",
     average: "3.3",
     percent: "2.4%",
-    audience: "97000",
+    audience: "9.7",
   },
   {
     rank: 6,
@@ -68,7 +68,7 @@ export const Data = [
     country: "호주",
     average: "",
     percent: "1.7%",
-    audience: "389",
+    audience: "0.0389",
   },
   {
     rank: 7,
@@ -79,7 +79,7 @@ export const Data = [
     country: "영국",
     average: "",
     percent: "1.4%",
-    audience: "411",
+    audience: "0.0411",
   },
   {
     rank: 8,
@@ -89,7 +89,7 @@ export const Data = [
     country: "일본",
     average: "",
     percent: "1.3%",
-    audience: "694",
+    audience: "0.0694",
   },
   {
     rank: 9,
@@ -99,7 +99,7 @@ export const Data = [
     country: "독일",
     average: 2.8,
     percent: "0.9%",
-    audience: "7186",
+    audience: "0.7186",
   },
   {
     rank: 10,
@@ -109,7 +109,7 @@ export const Data = [
     country: "일본",
     average: "3.2",
     percent: "0.9%",
-    audience: "440000",
+    audience: "44",
   },
 ];
 

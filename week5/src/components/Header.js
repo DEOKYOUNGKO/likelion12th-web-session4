@@ -2,26 +2,45 @@ import React from "react";
 import styled from "styled-components";
 import Modal from "./Modal";
 import { useState } from "react";
+import logo from "../assets/image/icon_logo.png";
 
 const Header = ({ LoginBtn }) => {
   return (
-    <HeaderContainer>
-      <Nav>
-        <a href="/movies">영화</a>
-        <a href="/series">시리즈</a>
-        <a href="/books">책</a>
-        <a href="/webtoons">웹툰</a>
-      </Nav>
-      <SearchBox placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." />
-      <div>
-        <Button onClick={LoginBtn}>로그인</Button>
-        <Button onClick={() => alert("회원가입")}>회원가입</Button>
-      </div>
-    </HeaderContainer>
+    <StickyHeader>
+      <HeaderContainer>
+        <LogoGenreBox>
+          <LogoImage src={logo} alt="로고 이미지" />
+          <GenreBox>
+            <GenreText>영화</GenreText>
+            <GenreText>TV</GenreText>
+            <GenreText>책</GenreText>
+            <GenreText>웹툰</GenreText>
+          </GenreBox>
+        </LogoGenreBox>
+        <SearchButtonBox>
+          <SearchBox
+            type="text"
+            placeholder="🔍  콘텐츠, 인물, 컬렉션, 유저를 검색해보세요."
+          />
+          <div>
+            <LoginButton onClick={LoginBtn}>로그인</LoginButton>
+            <SignUpButton onClick={() => alert("회원가입")}>
+              회원가입
+            </SignUpButton>
+          </div>
+        </SearchButtonBox>
+      </HeaderContainer>
+    </StickyHeader>
   );
 };
 
 export default Header;
+
+const StickyHeader = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 100;
+`;
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -32,27 +51,54 @@ const HeaderContainer = styled.header`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const Nav = styled.nav`
+const LogoGenreBox = styled.div`
   display: flex;
-  gap: 20px;
 `;
 
+const GenreBox = styled.div`
+  display: flex;
+  width: 180px;
+  height: 40px;
+  align-items: center;
+  margin-left: 30px;
+  justify-content: space-around;
+`;
+
+const GenreText = styled.div`
+  font-weight: bold;
+  font-size: 17px;
+  color: #7e7e7e;
+  :hover {
+    cursor: pointer;
+  }
+`;
 const SearchBox = styled.input`
-  padding: 10px;
-  margin: 0 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 300px;
+  height: 8px;
+  padding: 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #f5f5f7;
 `;
 
-const Button = styled.button`
+const LoginButton = styled.button`
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #ffffff;
+  color: #74747b;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+`;
 
-  &:hover {
-    background-color: #0056b3;
-  }
+const SignUpButton = styled(LoginButton)`
+  font-weight: bold;
+  border: 1px solid black;
+`;
+
+const LogoImage = styled.img`
+  width: 200px;
+`;
+
+const SearchButtonBox = styled.div`
+  display: flex;
 `;

@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterContainer = styled.footer`
-  background-color: #000000;
+  background-color: #1c1d1f;
   padding: 20px;
-  text-align: center;
+  text-align: flex-start;
   font-size: 14px;
-  color: #333;
+  color: #a5a5a7;
 `;
 
 const FooterLink = styled.a`
@@ -26,14 +26,14 @@ const Footer = () => (
   <FooterContainer>
     <FooterText>서비스 이용약관 | 개인정보 처리방침 | 회사 안내</FooterText>
     <FooterText>
-      고객센터:{" "}
+      고객센터 |{" "}
       <FooterLink href="mailto:cs@watchapedia.co.kr">
         cs@watchapedia.co.kr
       </FooterLink>
       , <FooterLink href="tel:02-515-9985">02-515-9985</FooterLink>
     </FooterText>
     <FooterText>
-      제휴 및 대외 협력:{" "}
+      제휴 및 대외 협력 |{" "}
       <FooterLink href="https://watcha.team/contact">
         https://watcha.team/contact
       </FooterLink>
