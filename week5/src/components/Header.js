@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import Modal from "./Modal";
-import { useState } from "react";
 import logo from "../assets/image/icon_logo.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ LoginBtn }) => {
   return (
     <StickyHeader>
       <HeaderContainer>
         <LogoGenreBox>
-          <LogoImage src={logo} alt="로고 이미지" />
+          <LogoLink to="/">
+            <LogoImage src={logo} alt="로고 이미지" />
+          </LogoLink>
           <GenreBox>
             <GenreText>영화</GenreText>
             <GenreText>TV</GenreText>
@@ -40,6 +41,7 @@ const StickyHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
+  background: transparent;
 `;
 
 const HeaderContainer = styled.header`
@@ -47,12 +49,22 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #fff;
+  /* background-color: #fff; */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const LogoGenreBox = styled.div`
   display: flex;
+`;
+
+const LogoLink = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const GenreBox = styled.div`
@@ -101,4 +113,5 @@ const LogoImage = styled.img`
 
 const SearchButtonBox = styled.div`
   display: flex;
+  gap: 10px;
 `;
