@@ -11,6 +11,7 @@ const Modal = ({ click }) => {
       <Container>
         <OutButton onClick={() => click(false)}>X</OutButton>
         <LogoImage src={logo} alt="로고 이미지" />
+        <LoginText>로그인</LoginText>
         <LoginInput placeholder="이메일" />
         <LoginInput placeholder="비밀번호" />
         <LoginRedButton>로그인</LoginRedButton>
@@ -52,6 +53,12 @@ const BackGround = styled.div`
 
 const LogoImage = styled.img`
   width: 200px;
+  padding: 10px;
+`;
+
+const LoginText = styled.div`
+  font-size: 17px;
+  font-weight: 800;
 `;
 
 const CenterBlock = styled.div`
@@ -123,7 +130,7 @@ const LoginTip = styled.div`
 const Container = styled.div`
   margin: auto;
   display: flex;
-  width: 450px;
+  width: 400px;
   height: 630px;
   background-color: #ffffff;
   border-radius: 6px;

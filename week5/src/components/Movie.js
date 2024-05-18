@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Movie = ({ data }) => {
+  // console.log(data);
   return (
     <>
       <MovieBox>
         <MovieImgBox>
-          <MovieImage src={data?.img} />
+          <MovieImage src={data.img} />
           <MovieRank>{data.rank}</MovieRank>
         </MovieImgBox>
         <MovieTextBox>
@@ -55,7 +56,7 @@ const MovieRank = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 `;
 

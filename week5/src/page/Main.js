@@ -29,10 +29,10 @@ const BoxOffice = styled.div`
 `;
 
 const RankText = styled.div`
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
   align-self: flex-start;
-  margin-left: 80px;
+  margin-left: 100px;
 `;
 
 export default Main;
