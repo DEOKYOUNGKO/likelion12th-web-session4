@@ -3,27 +3,27 @@ import Header from "./components/Header";
 import Modal from "./components/Modal";
 import Footer from "./components/Footer";
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Main from "./page/Main";
 import Detail from "./page/Detail";
-import { Routes, Route } from "react-router-dom";
 import NotFound from "./page/NotFound";
 
 function App() {
   const [click, setClick] = useState(false);
 
-  const handleLogin = () => {
+  const handleModal = () => {
     setClick((prev) => !prev);
   };
 
   return (
     <>
-      <Header LoginBtn={handleLogin}></Header>
+      <Header LoginBtn={handleModal} />
       <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route path="/detail/:title" element={<Detail />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/detail/:id" element={<Detail />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      {click && <Modal click={handleLogin} />}
+      {click && <Modal click={handleModal} />}
       <Footer />
     </>
   );

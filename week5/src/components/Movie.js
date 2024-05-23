@@ -1,21 +1,23 @@
 import styled from "styled-components";
+import MovieList from "./MovieList";
 
-const Movie = ({ data }) => {
-  // console.log(data);
+const Movie = ({ item }) => {
   return (
     <>
       <MovieBox>
         <MovieImgBox>
-          <MovieImage src={data.img} />
-          <MovieRank>{data.rank}</MovieRank>
+          <MovieImage
+            src={`https://image.tmdb.org/t/p/w500` + item.poster_path}
+          />
+          {/* <MovieRank>{id.title}</MovieRank> */}
         </MovieImgBox>
         <MovieTextBox>
-          <MovieTitle>{data.title}</MovieTitle>
+          {/* <MovieTitle>{id.title}</MovieTitle> */}
           <MovieYear>
-            {data.year} . {data.country}
+            {/* {id.release_date} . {id.original_country} */}
           </MovieYear>
           <MoviePercent>
-            예매률 {data.percent} . 누적관객 {data.audience}만명
+            {/* 예매률 {id.vote_average}% . 누적관객 {id.audience}만명 */}
           </MoviePercent>
         </MovieTextBox>
       </MovieBox>
@@ -69,6 +71,6 @@ const MovieTitle = styled.div`
   font-size: 20px;
 `;
 
-const MovieYear = styled.div``;
+const MovieYear = styled.p``;
 
-const MoviePercent = styled.div``;
+const MoviePercent = styled.p``;

@@ -1,22 +1,20 @@
 import styled from "styled-components";
 import Movie from "./Movie";
-import Data from "../assets/Data";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function MovieList() {
+function MovieList({ movielist }) {
   const navigate = useNavigate();
 
-  const handleMovieClick = (movieData) => {
-    navigate(`/detail/${movieData.rank}`, { state: { movieData } });
+  const handleMovieClick = (item) => {
+    navigate(`/detail/${item.id}`, { state: { item } });
   };
 
   return (
     <MovieListContainer>
-      {Data.map((Data) => (
-        <MovieContainer key={Data.rank} onClick={() => handleMovieClick(Data)}>
-          {/* <NavbarLink to={`/detail/${movieData.title}`} key={movieData.rank}> */}
-          <Movie data={Data} />
+      {movielist?.map((item) => (
+        <MovieContainer key={item.id} onClick={() => handleMovieClick(item)}>
+          <Movie item={item} />
         </MovieContainer>
       ))}
     </MovieListContainer>
