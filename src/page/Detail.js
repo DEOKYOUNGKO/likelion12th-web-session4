@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { GalleyData } from "../assets/GalleryData";
+import { GalleryData } from "../assets/Gallerydata";
 
 // import 보고싶어요 from "../assets/image/보고싶어요.png";
 // import 코멘트 from "../assets/image/코멘트.png";
@@ -104,7 +104,7 @@ const Detail = () => {
         <GalleryBox>
           <GalleryName>갤러리</GalleryName>
           <PhotoBox>
-            {GalleyData.map((gallery) => (
+            {GalleryData.map((gallery) => (
               <GalleryPhoto
                 key={gallery.id}
                 src={gallery.gallery}

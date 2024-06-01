@@ -9,7 +9,7 @@ import b8 from "../assets/image/1-8.jpg";
 import b9 from "../assets/image/1-9.jpg";
 import b10 from "../assets/image/1-10.jpg";
 
-export const GalleyData = [
+export const GalleryData = [
   { id: 1, gallery: b1 },
   { id: 2, gallery: b2 },
   { id: 3, gallery: b3 },
