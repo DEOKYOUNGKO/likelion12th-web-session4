@@ -5,7 +5,7 @@
 //   return (
 //     <>
 //       <GalleryBox>
-//         <GalleryText></ㅎ>
+//         <GalleryText></>
 //       </GalleryBox>
 
 //     </>

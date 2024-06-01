@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { GalleyData } from "../assets/GalleryData";
@@ -15,15 +15,13 @@ const Detail = () => {
 
   const { id } = useParams();
 
-  // console.log("test", id);
-
   useEffect(() => {
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${id}?language=%EF%BD%8B%EF%BD%8F`,
         {
           headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`, // Assuming it's a Bearer token
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
           },
         }
       )
@@ -34,7 +32,7 @@ const Detail = () => {
       .catch((error) => {
         // Handle errors console.error('Error:', error.message);
       });
-  }, []);
+  }, [setDetailList, id]);
 
   return detailList ? (
     <>

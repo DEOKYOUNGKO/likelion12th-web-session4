@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import MovieList from "./MovieList";
 
 const Movie = ({ item }) => {
   return (
@@ -47,28 +46,9 @@ const MovieImage = styled.img`
   border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const MovieRank = styled.button`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  left: 10px;
-  top: 10px;
-  background-color: black;
-  opacity: 0.7;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bold;
-`;
-
 const MovieTextBox = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const MovieTitle = styled.div`
-  font-size: 20px;
 `;
 
 const MovieYear = styled.p``;

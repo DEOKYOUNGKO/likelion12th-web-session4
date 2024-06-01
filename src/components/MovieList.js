@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Movie from "./Movie";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function MovieList({ movielist }) {
   const navigate = useNavigate();
