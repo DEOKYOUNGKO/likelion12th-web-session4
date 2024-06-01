@@ -1,33 +1,65 @@
 import React from "react";
 import styled from "styled-components";
-// import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { GalleyData } from "../assets/GalleryData";
+
 // import 보고싶어요 from "../assets/image/보고싶어요.png";
 // import 코멘트 from "../assets/image/코멘트.png";
 // import 보는중 from "../assets/image/보는 중.png";
 // import 더보기 from "../assets/image/더보기.png";
 
 const Detail = () => {
-  const location = useLocation();
+  const [detailList, setDetailList] = useState();
 
-  return (
+  const { id } = useParams();
+
+  // console.log("test", id);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}?language=%EF%BD%8B%EF%BD%8F`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`, // Assuming it's a Bearer token
+          },
+        }
+      )
+      .then((res) => {
+        setDetailList(res.data);
+        // console.log("data", res.data);
+      })
+      .catch((error) => {
+        // Handle errors console.error('Error:', error.message);
+      });
+  }, []);
+
+  return detailList ? (
     <>
       <Container>
-        <BackImage src={location.state.movieData.img} alt="배경화면" />
+        <BackImage
+          src={`https://image.tmdb.org/t/p/w500${detailList.backdrop_path}`}
+          alt="배경화면"
+        />
         <MovieInfo>
-          <DetailTitle1>{location.state.movieData.title}</DetailTitle1>
-          <DetailTitle2>{location.state.movieData.title}</DetailTitle2>
+          <DetailTitle1>{detailList.original_title}</DetailTitle1>
+          <DetailTitle2>{detailList.title}</DetailTitle2>
           <DetailYearCountry>
-            {location.state.movieData.year}. {location.state.movieData.country}
+            {detailList.release_date}.{detailList.genre}.
+            {detailList.original_country}
           </DetailYearCountry>
           <DetailRankPercentAudience>
-            예매 순위{location.state.movieData.rank}(
-            {location.state.movieData.percent})위. 누적 관객{" "}
-            {location.state.movieData.audience}만명
+            예매 순위{detailList.rank}({detailList.vote_average}%)위. 누적 관객
+            {detailList.audience}만명
           </DetailRankPercentAudience>
         </MovieInfo>
         <ReviewBox>
-          <MoviePoster src={location.state.movieData.img} alt="포스터" />
+          <MoviePoster
+            src={`https://image.tmdb.org/t/p/w500${detailList.poster_path}`}
+            alt="포스터"
+          />
           <MovieContents>
             <ButtonContainer>
               <MovieEvaluateText>평가하기</MovieEvaluateText>
@@ -48,7 +80,7 @@ const Detail = () => {
                 ・・・ 더보기
               </DetailButton>
             </ButtonContainer>
-            <MovieText>{location.state.movieData.text}</MovieText>
+            <MovieText>{detailList.overview}</MovieText>
           </MovieContents>
         </ReviewBox>
         {/* <PersonBox>
@@ -74,46 +106,13 @@ const Detail = () => {
         <GalleryBox>
           <GalleryName>갤러리</GalleryName>
           <PhotoBox>
-            <GalleryPhoto
-              src={location.state.movieData.gallery1}
-              alt="갤러리사진1"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery2}
-              alt="갤러리사진2"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery3}
-              alt="갤러리사진3"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery4}
-              alt="갤러리사진4"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery5}
-              alt="갤러리사진5"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery6}
-              alt="갤러리사진6"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery7}
-              alt="갤러리사진7"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery8}
-              alt="갤러리사진8"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery9}
-              alt="갤러리사진9"
-            />
-            <GalleryPhoto
-              src={location.state.movieData.gallery10}
-              alt="갤러리사진10"
-            />
+            {GalleyData.map((gallery) => (
+              <GalleryPhoto
+                key={gallery.id}
+                src={gallery.gallery}
+                alt={`갤러리${gallery.id}`}
+              />
+            ))}
           </PhotoBox>
         </GalleryBox>
         <VideoContainer>
@@ -138,16 +137,20 @@ const Detail = () => {
             <VideoRink>링크 연결</VideoRink>
             <VideoRink>링크 연결</VideoRink>
             <VideoRink>링크 연결</VideoRink>
-            <VideoRink>링크 연결</VideoRink>
-            <VideoRink>링크 연결</VideoRink>
-            <VideoRink>링크 연결</VideoRink>
           </VideoBox>
         </VideoContainer>
       </Container>
     </>
+  ) : (
+    <Loading>로딩중</Loading>
   );
 };
 
+export default Detail;
+
+const Loading = styled.div`
+  font-size: 40px;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -352,5 +355,3 @@ const VideoRink = styled.div`
   font-size: 50px;
   margin: 10px 50px;
 `;
-
-export default Detail;
